@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN }}
       - name: Setup Node Environment
         uses: actions/setup-node@v3
         with:
@@ -22,13 +22,13 @@ jobs:
           cache: "npm"
       - name: Install Dependencies
         run: npm ci
-      - name: Create Version PR or Github Releaseee
+      - name: Create Version PR or Github Release
         id: changesets
         uses: changesets/action@v1
         with:
           publish: npx changeset tag
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN }}
       - run: echo '${{ toJson(steps.changesets.outputs)}}'
       - name: Send a Slack Message for Version PR Updates
         if: steps.changesets.outputs.pullRequestNumber
