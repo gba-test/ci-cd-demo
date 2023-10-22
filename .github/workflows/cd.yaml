@@ -22,7 +22,7 @@ jobs:
           cache: "npm"
       - name: Install Dependencies
         run: npm ci
-      - name: Create Version PR or Github Release
+      - name: Create Version PR or Github Releaseee
         id: changesets
         uses: changesets/action@v1
         with:
