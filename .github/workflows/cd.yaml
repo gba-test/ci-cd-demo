@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESETS_TOKEN }}
+          GITHUB_TOKEN: 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
       - name: Setup Node Environment
         uses: actions/setup-node@v3
         with:
